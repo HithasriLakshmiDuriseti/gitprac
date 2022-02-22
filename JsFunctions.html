@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <link rel="stylesheet" href="JsFunctions.css" />
+  </head>
+  <body>
+    <h1 align="center">Login Form</h1>
+    <form action="#" align="center" onsubmit="return validation()">
+      <label for="">Username</label>
+      <input type="text" placeholder="Enter Username" id="uname" /> <br />
+      <span id="username"></span>
+      <br /><br />
+      <label for="">Password</label>
+      <input type="text" placeholder="Enter Password" id="pwd" /> <br />
+      <span id="password"></span>
+      <br /><br />
+      <button>Submit</button>
+    </form>
+
+    <script>
+      function validation() {
+        var user = document.getElementById("uname").value;
+        var paswd = document.getElementById("pwd").value;
+
+        if (user == "") {
+          document.getElementById("username").innerHTML =
+            "**Username to be filled**";
+          return false;
+        }
+        if (user.length <= 6 || user.length > 20) {
+          document.getElementById("username").innerHTML =
+            "**Username must be between 6 to 20 characters**";
+          return false;
+        }
+
+        if (paswd == "") {
+          document.getElementById("password").innerHTML = "**Enter Password**";
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>

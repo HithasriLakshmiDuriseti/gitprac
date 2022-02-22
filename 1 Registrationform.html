@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="#" onsubmit="return validation()">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-auto"> <br>
+                    <div class="h1">Registration Form</div> <br>
+                    <label for="" class="form-label">Name of the Student</label>
+                    <input type="text" class="form-control" placeholder="Enter your Name" id="username">
+                    <span id="uname"></span> <br>
+                    <!-- Error msg for username -->
+                    <label for="" class="form-label">Password</label>
+                    <input type="password" class="form-control" placeholder="Enter Password" id="password">
+                    <span id="pwd"></span> <br>
+                    <!-- Error msg for password -->
+                    <select name="" id="branch" class="form-select">
+                        <option value="0">Branch</option>
+                        <option value="1">CSE</option>
+                        <option value="2">IT</option>
+                        <option value="3">ECE</option>
+                        <option value="4">EEE</option>
+                        <option value="5">CE</option>
+                        <option value="6">ME</option>
+                    </select>
+                    <span id="brch"></span> <br>
+                    <!-- Error Msg for Branch -->
+                    <label for="" class="form-label">Gender</label> <br>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="gender" id="g" class="form-check-input"> Female
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="gender" id="g" class="form-check-input"> Male
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="gender" id="g" class="form-check-input"> Others
+                    </div> <br>
+                    <span id="gen"></span> <br>
+                    <!-- Error Msg for Gender -->
+                    <label for="" class="form-label">Interests</label>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="i"> Music
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="i"> Sports
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="i"> Enterpreneurship
+                    </div>
+                    <span id="interests"></span>
+                    <div class="text-center">
+                        <button class="btn btn-success">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        function validation() {
+            let user = document.getElementById('username').value;
+            let paswd = document.getElementById('password').value;
+            let bnch = document.getElementById('branch').value;
+            let gend = document.getElementById('g').value;
+
+            let a = /^[a-zA-Z0-9]+$/;
+            let p = /@gmail\.com$/
+            
+            if (user.match(a)) {
+                document.getElementById("uname").innerHTML = ""
+                if (paswd.match(p)) {
+                    document.getElementById("pwd").innerHTML = ""
+                    if (bnch == 0) {
+                        document.getElementById("brch").innerHTML = "Select Branch"
+                        if (gend.checked) {
+                            document.getElementById("gen").innerHTML = ""
+                            return true;
+                        }
+                        else {
+                            document.getElementById("gen").innerHTML = "Select Gender"
+                            return false;
+                        }
+                    }
+
+                }
+                else {
+                    document.getElementById("pwd").innerHTML = "Incorrect Password"
+                    return false;
+                }
+            }
+            else {
+                document.getElementById("uname").innerHTML = "Enter valid name"
+                return false;
+            }
+            
+        }
+    </script>
+</body>
+
+</html>
